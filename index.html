@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lucas Bueno — Portfólio Artístico</title>
+  <meta name="description" content="Portfólio artístico de Lucas Bueno — ator, escritor, dramaturgo e professor.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --dark: #1c1c3a;
+      --cream: #f5f0e8;
+      --green: #2d5a1e;
+      --copper: #c8894f;
+      --copper-light: #d4a574;
+      --text: #333;
+      --text-light: #e8dcc8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      max-width: 960px;
+      width: 100%;
+    }
+
+    .hero-photo {
+      width: 340px;
+      height: 420px;
+      object-fit: cover;
+      border: 3px solid var(--copper);
+      flex-shrink: 0;
+    }
+
+    .hero-text h1 {
+      font-size: 4.5rem;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--copper-light);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .hero-line {
+      width: 100%;
+      height: 2px;
+      background: var(--copper);
+      margin-top: 2rem;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section-light {
+      background: var(--cream);
+      padding: 5rem 2rem;
+    }
+
+    .section-dark {
+      background: var(--dark);
+      padding: 5rem 2rem;
+      color: var(--text-light);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-size: 2.8rem;
+      color: var(--green);
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
+
+    .section-dark .section-title {
+      color: #fff;
+      font-style: normal;
+      text-align: center;
+    }
+
+    /* ─── QUEM SOU ─── */
+    .about {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+
+    .about-text {
+      flex: 1;
+      font-size: 1.05rem;
+      text-align: justify;
+    }
+
+    .about-photo {
+      width: 320px;
+      height: 420px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    /* ─── FORMAÇÃO ─── */
+    .formacao-grid {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .formacao-item {
+      text-align: center;
+      flex: 1;
+      max-width: 260px;
+    }
+
+    .formacao-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--copper);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fff;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .formacao-item h3 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .formacao-item p {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      background: var(--dark);
+      padding: 6rem 2rem;
+      text-align: center;
+    }
+
+    .divider h2 {
+      font-size: 3.2rem;
+      color: #fff;
+    }
+
+    .divider p {
+      color: var(--copper-light);
+      font-size: 1.1rem;
+      font-style: italic;
+      margin-top: 0.5rem;
+    }
+
+    .divider-line {
+      width: 200px;
+      height: 2px;
+      background: var(--copper);
+      margin: 1rem auto 0;
+    }
+
+    /* ─── WORK CARDS ─── */
+    .work-card {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      padding: 5rem 2rem;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .work-card-text {
+      flex: 1;
+    }
+
+    .work-card-text h2 {
+      font-size: 2.2rem;
+      color: var(--green);
+      font-style: italic;
+      margin-bottom: 0.3rem;
+    }
+
+    .work-card-text .meta {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .work-card-text .role {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+
+    .work-card-text p.desc {
+      text-align: justify;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .work-card-images {
+      flex-shrink: 0;
+      width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .work-card-images img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    /* ─── HEADER BAR ─── */
+    .page-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--copper);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+    }
+
+    .page-header span:last-child {
+      color: var(--copper);
+    }
+
+    /* ─── CONTATO ─── */
+    .contato {
+      background: var(--dark);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .contato h2 {
+      font-size: 3.5rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .contato-line {
+      width: 200px;
+      height: 2px;
+      background: var(--copper);
+      margin: 1rem auto 2rem;
+    }
+
+    .contato-label {
+      color: var(--copper-light);
+      font-style: italic;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .contato-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .contato-item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .contato-item h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--copper-light);
+      font-style: italic;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contato-item p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    .contato-item a {
+      color: #ccc;
+      text-decoration: none;
+    }
+
+    .contato-item a:hover {
+      color: var(--copper-light);
+    }
+
+    .contato-divider {
+      width: 1px;
+      background: #444;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .hero-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .hero-photo {
+        width: 260px;
+        height: 320px;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .about {
+        flex-direction: column;
+      }
+
+      .about-photo {
+        width: 100%;
+        height: 350px;
+        order: -1;
+      }
+
+      .formacao-grid {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .work-card {
+        flex-direction: column;
+      }
+
+      .work-card-images {
+        width: 100%;
+      }
+
+      .contato-grid {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .contato-divider {
+        width: 60%;
+        height: 1px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .work-card-text h2 {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <img src="images/page01_img1.jpeg" alt="Lucas Bueno" class="hero-photo">
+      <div class="hero-text">
+        <h1>Lucas<br>Bueno</h1>
+        <p>Ator, Escritor e Professor</p>
+        <div class="hero-line"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUEM SOU -->
+  <section class="section-light">
+    <div class="container">
+      <div class="page-header">
+        <span>Lucas Bueno</span>
+        <span>Portfólio Artístico</span>
+      </div>
+      <div class="about">
+        <div class="about-text">
+          <h2 class="section-title">Quem sou</h2>
+          <p>Ator, escritor, dramaturgo e professor. Graduado em Letras/Libras pela UNIOESTE. Mestrando no Profletras. Professor da Rede Pública de Ensino. No teatro desde 2016, com atuação em produção cultural, dramaturgia autoral e trabalhos como ator em espetáculos de grupos como a Companhia Cênica de Cascavel, o Grupo Digressão Cênica (UNIOESTE) e os Arteístas. Transita entre o teatro, a literatura e a educação, sempre explorando os cruzamentos entre a palavra escrita e a cena.</p>
+        </div>
+        <img src="images/page02_img1.jpeg" alt="Lucas Bueno — retrato" class="about-photo">
+      </div>
+    </div>
+  </section>
+
+  <!-- FORMAÇÃO -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="container">
+      <div class="page-header">
+        <span>Lucas Bueno</span>
+        <span>Portfólio Artístico</span>
+      </div>
+      <h2 class="section-title" style="font-style: normal; color: var(--text);">Formação</h2>
+      <div class="formacao-grid">
+        <div class="formacao-item">
+          <div class="formacao-circle">01</div>
+          <h3>Letras / Libras</h3>
+          <p>Graduação pela UNIOESTE — Cascavel.</p>
+        </div>
+        <div class="formacao-item">
+          <div class="formacao-circle">02</div>
+          <h3>Profletras</h3>
+          <p>Mestrado Profissional em Letras, em andamento — UNIOESTE.</p>
+        </div>
+        <div class="formacao-item">
+          <div class="formacao-circle">03</div>
+          <h3>Professor</h3>
+          <p>Professor da Rede Pública de Ensino do Paraná.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER: TRABALHOS -->
+  <div class="divider">
+    <h2>Trabalhos</h2>
+    <p>Teatro, Cinema e Produção Cultural</p>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- CASA DE CULTURA CASANÓZ -->
+  <section class="section-light">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>Casa de Cultura Casanóz</h2>
+        <p class="meta">2016 - 2017</p>
+        <p class="role">Agente e Produtor Cultural</p>
+        <p class="desc">Durante os anos de 2016 e 2017 na Casa de Cultura Casanóz desenvolveu projetos culturais nas áreas de Teatro e Literatura. Dentre os principais trabalhos realizados no coletivo destaca-se o projeto 'Clube da Escrita', que tinha como proposta a troca de saberes e experiências com artistas e público geral, fomentando a produção de textos autorais divulgados nas redes sociais e eventos locais.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page05_img1.jpeg" alt="Clube da Escrita — cartaz">
+        <img src="images/page05_img2.jpeg" alt="Equipe Casa de Cultura Casanóz">
+      </div>
+    </div>
+  </section>
+
+  <!-- A PARTIDA DO NAVIO -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>A Partida do Navio</h2>
+        <p class="meta">2018 - Universidade Federal de Sergipe</p>
+        <p class="role">Ator</p>
+        <p class="desc">Espetáculo itinerante realizado nos dias 26 e 27 de agosto de 2018, nas cidades de Aracaju e Barra dos Coqueiros. A peça resgata memórias locais e folclóricas, levando o público por uma procissão sobre o Rio Sergipe, encontrando no caminho signos e simbolismos que refletem nosso processo histórico e cultural. Direção da Profa. Dra. Márcia Baltazar.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page06_img1.jpeg" alt="A Partida do Navio — elenco">
+        <img src="images/page06_img2.jpeg" alt="A Partida do Navio — cartaz">
+      </div>
+    </div>
+  </section>
+
+  <!-- HASTA LA VISTA COMPAÑERO -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>Hasta La Vista Compañero</h2>
+        <p class="meta">2018 - Universidade Federal de Sergipe</p>
+        <p class="role">Ator</p>
+        <p class="desc">Apresentado na IV SEMAC/UFS e no FASC/UFS. Uma imersão na vida e obra do poeta cearense Antonio Carlos Belchior, a peça entrelaça elementos de História, MPB, Literatura e Teatro. Produção interdisciplinar sob a direção da Profa. Dra. Lourdisnete Benevides.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page07_img1.jpeg" alt="Hasta La Vista Compañero — cena">
+        <img src="images/page07_img2.jpeg" alt="Hasta La Vista Compañero — cartaz">
+      </div>
+    </div>
+  </section>
+
+  <!-- O AUTO DAS SETE ESSÊNCIAS -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>O Auto das Sete Essências</h2>
+        <p class="meta">2019 - Companhia Cênica de Cascavel</p>
+        <p class="role">Ator e Dramaturgo</p>
+        <p class="desc">Em um cenário utópico, sete personagens arquetípicos são jogados ao mundo por um Demiurgo, que confronta seus sonhos com dilemas da vida humana. Dirigido por Aline Fernandes, o espetáculo desafia o público a refletir sobre sua própria natureza e destino. Apresentado no Festival de Teatro de Cascavel e Palotina.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page08_img1.jpeg" alt="O Auto das Sete Essências — cartaz">
+        <img src="images/page08_img2.jpeg" alt="O Auto das Sete Essências — cena">
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER: PROJETOS RECENTES -->
+  <div class="divider">
+    <h2>Projetos Recentes</h2>
+    <p>2019 - 2026</p>
+    <div class="divider-line"></div>
+  </div>
+
+  <!-- ARTEÍSTAS + PALIMPSER -->
+  <section class="section-light">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>Arteístas</h2>
+        <p class="meta">2022 - 2023</p>
+        <p class="role">Ator</p>
+        <p class="desc">Grupo de Teatro Contemporâneo com atuação em Cascavel entre 2019 e 2023. Participou de processos criativos autorais e estudos práticos sobre a cena contemporânea.</p>
+
+        <h2 style="margin-top: 2.5rem;">Curta-metragem Palimpser</h2>
+        <p class="meta" style="color: var(--copper);">2023 - Lei Paulo Gustavo - Ator</p>
+        <p class="desc">Curta-metragem realizado com recursos da Lei Paulo Gustavo, marcando a incursão do grupo no audiovisual.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page10_img1.jpeg" alt="Palimpser — cartaz">
+        <img src="images/page10_img2.jpeg" alt="Palimpser — cena">
+      </div>
+    </div>
+  </section>
+
+  <!-- A ÓPERA DOS TRÊS VINTÉNS -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>A Ópera dos Três Vinténs</h2>
+        <p class="meta">2023 - Grupo Digressão Cênica / UNIOESTE</p>
+        <p class="role">Ator - Mack Navalha</p>
+        <p class="desc">Montagem da clássica obra de Bertolt Brecht pelo Grupo Digressão Cênica, vinculado à UNIOESTE — Cascavel. Atuou no papel de Mack Navalha (Macheath), personagem central da trama que satiriza a sociedade burguesa através do submundo londrino.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page11_img1.jpeg" alt="A Ópera dos Três Vinténs — máscara">
+        <img src="images/page11_img2.jpeg" alt="A Ópera dos Três Vinténs — elenco">
+      </div>
+    </div>
+  </section>
+
+  <!-- A CASA DE BERNARDA ALBA -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>A Casa de Bernarda Alba</h2>
+        <p class="meta">2024 - Grupo Digressão Cênica / UNIOESTE</p>
+        <p class="role">Ator - Pepe</p>
+        <p class="desc">Montagem da obra de Federico García Lorca pelo Grupo Digressão Cênica. A peça retrata a opressão e o autoritarismo dentro de uma casa dominada pela matriarca Bernarda Alba. Atuou como Pepe, o personagem masculino cuja presença, embora quase sempre fora de cena, desencadeia os conflitos centrais da trama.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page12_img1.jpeg" alt="A Casa de Bernarda Alba — matéria SOT">
+      </div>
+    </div>
+  </section>
+
+  <!-- NÓS QUE AQUI ESTAMOS -->
+  <section class="section-light" style="padding-top: 0;">
+    <div class="work-card">
+      <div class="work-card-text">
+        <h2>Nós que aqui estamos</h2>
+        <p class="meta">2025 - Grupo Digressão Cênica / UNIOESTE</p>
+        <p class="role">Ator e Assistente de Direção</p>
+        <p class="desc">Espetáculo de teatro contemporâneo do Grupo Digressão Cênica que mescla textos consagrados e dramaturgias autorais. Além da atuação, participou como assistente da direção, ampliando sua experiência nos processos criativos e de encenação.</p>
+      </div>
+      <div class="work-card-images">
+        <img src="images/page13_img1.jpeg" alt="Nós que aqui estamos — cena">
+        <img src="images/page13_img2.jpeg" alt="Nós que aqui estamos — palco">
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <footer class="contato">
+    <h2>Obrigado!</h2>
+    <div class="contato-line"></div>
+    <p class="contato-label">Cascavel — PR</p>
+  </footer>
+
+</body>
+</html>
