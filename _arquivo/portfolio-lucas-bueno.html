@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Bueno — Ator, Escritor, Dramaturgo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0d0d0d;
+    --paper: #f5f2ed;
+    --muted: #8a857d;
+    --accent: #b5341c;
+    --line: rgba(13,13,13,0.12);
+    --serif: 'Cormorant Garamond', serif;
+    --sans: 'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 5rem;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 4rem 6rem 4rem;
+    border-right: 1px solid var(--line);
+  }
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+  .hero-name {
+    font-family: var(--serif);
+    font-size: clamp(5rem, 10vw, 8.5rem);
+    font-weight: 300;
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+  }
+  .hero-name em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 6rem 4rem 6rem 4rem;
+  }
+  .hero-tagline {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.4;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    max-width: 340px;
+  }
+  .hero-roles {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .role-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .role-item::before {
+    content: '';
+    display: block;
+    width: 1.5rem;
+    height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 4rem; border-top: 1px solid var(--line); }
+
+  .section-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4rem;
+  }
+
+  /* ── BIO ── */
+  .bio-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .bio-meta {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 2.2;
+  }
+  .bio-text {
+    font-family: var(--serif);
+    font-size: 1.45rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--ink);
+  }
+  .bio-text strong {
+    font-weight: 600;
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ── TIMELINE ── */
+  .timeline { display: flex; flex-direction: column; }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 7rem 1px 1fr;
+    gap: 0 3rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--line);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .timeline-item.visible { opacity: 1; transform: translateY(0); }
+  .timeline-year {
+    font-family: var(--serif);
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--muted);
+    padding-top: 0.2rem;
+    text-align: right;
+  }
+  .timeline-line {
+    background: var(--line);
+    position: relative;
+  }
+  .timeline-line::before {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .timeline-content { padding-left: 0; }
+  .timeline-org {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .timeline-title {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.6rem;
+  }
+  .timeline-title em { font-style: italic; color: var(--accent); }
+  .timeline-role {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.8rem;
+  }
+  .timeline-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #4a4540;
+    max-width: 540px;
+  }
+
+  /* ── CURRENT PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .project-card {
+    background: var(--paper);
+    padding: 3rem;
+    transition: background 0.3s;
+  }
+  .project-card:hover { background: #f0ece5; }
+  .project-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+  .project-name {
+    font-family: var(--serif);
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .project-name em { font-style: italic; }
+  .project-desc {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: #4a4540;
+    margin-bottom: 1.5rem;
+  }
+  .project-detail {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  /* ── CONTACT ── */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .contact-headline {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 300;
+    line-height: 1.1;
+  }
+  .contact-headline em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 2rem; }
+  .contact-item {}
+  .contact-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .contact-value {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+  }
+  .contact-value a { color: var(--ink); text-decoration: none; }
+  .contact-value a:hover { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 2rem 4rem;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 1.5rem 3rem; border-right: none; border-bottom: 1px solid var(--line); }
+    .hero-right { padding: 3rem 1.5rem 4rem; }
+    section { padding: 4rem 1.5rem; }
+    .bio-grid, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 4rem 1px 1fr; gap: 0 1.5rem; }
+    footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Lucas Bueno</a>
+  <ul class="nav-links">
+    <li><a href="#bio">Sobre</a></li>
+    <li><a href="#trabalhos">Trabalhos</a></li>
+    <li><a href="#projetos">Projetos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-top: none; padding: 0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Portfólio — 2026</p>
+    <h1 class="hero-name">Lucas<br><em>Bueno</em></h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-tagline">Da cena ao texto,<br>do verso ao palco.</p>
+    <div class="hero-roles">
+      <span class="role-item">Ator</span>
+      <span class="role-item">Dramaturgo</span>
+      <span class="role-item">Escritor</span>
+      <span class="role-item">Poeta</span>
+    </div>
+  </div>
+</section>
+
+<!-- BIO -->
+<section id="bio">
+  <p class="section-label">Sobre</p>
+  <div class="bio-grid">
+    <div class="bio-meta">
+      Cascavel, PR<br>
+      Brasil<br><br>
+      Ativo desde<br>
+      2016
+    </div>
+    <div class="bio-text">
+      Artista cênico formado entre o sertão nordestino e o oeste paranaense. Transita entre <strong>dramaturgia, atuação e escrita literária</strong> com uma trajetória que percorre coletivos culturais, grupos universitários e companhias de teatro. Seu trabalho investiga a memória, os arquétipos humanos e a linguagem como matéria viva.
+    </div>
+  </div>
+</section>
+
+<!-- TRABALHOS -->
+<section id="trabalhos">
+  <p class="section-label">Trabalhos</p>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-year">2016–17</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <p class="timeline-org">Casa de Cultura Casanóz</p>
+        <h2 class="timeline-title">Clube da <em>Escrita</em></h2>
+        <p class="timeline-role">Agente e Produtor Cultural</p>
+        <p class="timeline-desc">Projeto de troca de saberes entre artistas e público, fomentando a produção de textos autorais divulgados em redes sociais e eventos locais. Desenvolveu ainda atividades nas áreas de Teatro e Literatura.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2018</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <p class="timeline-org">Universidade Federal de Sergipe</p>
+        <h2 class="timeline-title"><em>A Partida</em> do Navio</h2>
+        <p class="timeline-role">Ator · Espetáculo Itinerante</p>
+        <p class="timeline-desc">Encenação que resgata memórias locais e folclóricas a partir do Navio Heráclito Dantas, conduzindo o público em uma procissão pelo Rio Sergipe. Apresentado em Aracaju e Barra dos Coqueiros sob direção da Profa. Dra. Márcia Baltazar.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2018</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <p class="timeline-org">Universidade Federal de Sergipe</p>
+        <h2 class="timeline-title">Hasta La Vista <em>Compañero</em></h2>
+        <p class="timeline-role">Ator · IV SEMAC/UFS e FASC/UFS</p>
+        <p class="timeline-desc">Imersão na vida e obra de Belchior, entrelaçando História, MPB, Literatura e Teatro. Produção interdisciplinar da UFS sob direção da Profa. Dra. Lourdisnete Benevides.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-year">2019</div>
+      <div class="timeline-line"></div>
+      <div class="timeline-content">
+        <p class="timeline-org">Companhia Cênica de Cascavel</p>
+        <h2 class="timeline-title">O Auto das Sete <em>Essências</em></h2>
+        <p class="timeline-role">Ator e Dramaturgo · Festival de Teatro de Cascavel e Palotina</p>
+        <p class="timeline-desc">Texto de Lucas Bueno. Em cenário utópico, sete arquétipos são lançados ao mundo por um Demiurgo que confronta seus sonhos com os dilemas humanos. Direção de Aline Fernandes.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJETOS ATUAIS -->
+<section id="projetos">
+  <p class="section-label">Projetos Atuais</p>
+  <div class="projects-grid">
+    <div class="project-card">
+      <p class="project-tag">Teatro Universitário</p>
+      <h2 class="project-name">Digressão<br><em>Cênica</em></h2>
+      <p class="project-desc">Grupo universitário de teatro em montagem da <em>Ópera de Três Vinténs</em> de Bertolt Brecht — uma das obras centrais do teatro político do século XX.</p>
+      <p class="project-detail">Função: Ator</p>
+    </div>
+    <div class="project-card">
+      <p class="project-tag">Teatro Contemporâneo</p>
+      <h2 class="project-name"><em>Arte</em>ístas</h2>
+      <p class="project-desc">Grupo de teatro contemporâneo em fase de estudo e montagem de novo espetáculo autoral. Pesquisa de linguagem cênica e criação coletiva.</p>
+      <p class="project-detail">Função: Ator</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <p class="section-label">Contato</p>
+  <div class="contact-grid">
+    <div class="contact-headline">
+      Vamos criar<br><em>algo juntos.</em>
+    </div>
+    <div class="contact-details">
+      <div class="contact-item">
+        <p class="contact-label">E-mail</p>
+        <p class="contact-value"><a href="mailto:lucsbuen@hotmail.com">lucsbuen@hotmail.com</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Telefone / WhatsApp</p>
+        <p class="contact-value"><a href="tel:+5545998546291">(45) 99854-6291</a></p>
+      </div>
+      <div class="contact-item">
+        <p class="contact-label">Localização</p>
+        <p class="contact-value">Cascavel, Paraná — Brasil</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Lucas Bueno © 2026</span>
+  <span>Escritor · Ator · Dramaturgo · Poeta</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 100);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.timeline-item').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
